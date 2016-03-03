@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stage name:</strong>
+  <%= @stage.stage_name %>
+</p>
+
+<p>
+  <strong>Stage number:</strong>
+  <%= @stage.stage_number %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @stage.title %>
+</p>
+
+<p>
+  <strong>Motivation:</strong>
+  <%= @stage.motivation %>
+</p>
+
+<p>
+  <strong>Bonus:</strong>
+  <%= @stage.bonus %>
+</p>
+
+<p>
+  <strong>Exp:</strong>
+  <%= @stage.exp %>
+</p>
+
+<p>
+  <strong>Money:</strong>
+  <%= @stage.money %>
+</p>
+
+<%= link_to 'Edit', edit_stage_path(@stage) %> |
+<%= link_to 'Back', stages_path %>

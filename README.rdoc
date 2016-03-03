@@ -1,0 +1,9 @@
+00: rails new XXXXX --skip-bundle
+01: overwrite Gemfile
+02: bundle install
+03: rails g rspec:install
+04: bundle exec guard init rspec
+05: rubocop --auto-gen-config
+06: set (copy) config/application.rb, config/locales/ja.yml
+07: rails g uploader image
+08: rails g foundation:install => a

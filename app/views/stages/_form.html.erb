@@ -1,0 +1,62 @@
+<%= form_for(@stage) do |f| %>
+  <% if @stage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stage.errors.count, "error") %> prohibited this stage from being saved:</h2>
+
+      <ul>
+      <% @stage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :stage_name %><br>
+    <%= f.select :stage_name,
+      {'通常選挙区1' => 'stage_1',
+       '通常選挙区2' => 'stage_2',
+       '通常選挙区3' => 'stage_3',
+    }%>
+  </div>
+  <div class="field">
+    <%= f.label :stage_number %><br>
+    <%= f.text_field :stage_number %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :difficulty %><br>
+    <%= f.select :difficulty,
+      {'Normal' => 'Normal',
+       'Hard' => 'Hard',
+    }%>
+  </div>
+  <div class="field">
+    <%= f.label :motivation %><br>
+    <%= f.number_field :motivation %>
+  </div>
+  <div class="field">
+    <%= f.label :bonus %><br>
+    <%= f.select :bonus,
+      {'なし' => 0,
+       '近接' => 1,
+       '射撃' => 2,
+       '魔法' => 3,
+       '重装' => 4,
+    }%>
+  </div>
+  <div class="field">
+    <%= f.label :exp %><br>
+    <%= f.number_field :exp %>
+  </div>
+  <div class="field">
+    <%= f.label :money %><br>
+    <%= f.number_field :money %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

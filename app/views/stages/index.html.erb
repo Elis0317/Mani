@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Stages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stage name</th>
+      <th>Stage number</th>
+      <th>Title</th>
+      <th>Difficulty</th>
+      <th>Motivation</th>
+      <th>Bonus</th>
+      <th>Exp</th>
+      <th>Money</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stages.each do |stage| %>
+      <tr>
+        <td>
+          <% case stage.stage_name %>
+          <% when 'stage_1' %>
+            <%= '通常選挙区1' %>
+          <% when 'stage_2' %>
+            <%= '通常選挙区2' %>
+          <% when 'stage_3' %>
+            <%= '通常選挙区3' %>
+          <% end %>
+        </td>
+        <td><%= stage.stage_number %></td>
+        <td><%= stage.title %></td>
+        <td><%= stage.difficulty %></td>
+        <td><%= stage.motivation %></td>
+        <td>
+          <% case stage.bonus %>
+          <% when 0 %>
+            <%= 'なし' %>
+          <% when 1 %>
+            <%= '近接' %>
+          <% when 2 %>
+            <%= '射撃' %>
+          <% when 3 %>
+            <%= '魔法' %>
+          <% when 4 %>
+            <%= '重装' %>
+          <% end %>
+        </td>
+        <td><%= stage.exp %></td>
+        <td><%= stage.money %></td>
+        <td><%= link_to 'Show', stage %></td>
+        <td><%= link_to 'Edit', edit_stage_path(stage) %></td>
+        <td><%= link_to 'Destroy', stage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stage', new_stage_path %>
