@@ -1,0 +1,62 @@
+/* 基本設定
+ * 下の@include data-tableでこの情報がインクルードされる */
+$garnet           : #942343;
+$forest_green     : #288C66;
+$gold             : #ffd700;
+
+/* 表の基本設定 */
+@mixin table_base {
+  //表の中央揃え
+  margin-left: auto;
+  margin-right: auto;
+
+  th, td {
+    font-size: 115%;
+    padding: 6px; // paddingを小さめに
+  }
+  th {
+    font-size: 90%;
+    text-align: center;
+    color: white;
+  }
+}
+
+@mixin table_stage{
+  @include table_base; // 上記のtable_baseをインクルード
+
+  /* 幅調整 */
+  th,td{
+    table-layout:fixed;
+  }
+  th {
+    a { text-decoration: none; }
+    a:link { color: $gold; }
+    a:visited { color: $gold; }
+    a:hover {
+      color: $gold;
+      text-decoration: underline;
+    }
+  }
+}
+
+table.stage{
+  @include table_stage;
+  th {
+    background-color: #1e90ff;
+    font-weight: normal;
+  }
+  td.int {
+    text-align: right;
+  }
+  td.str {
+    white-space: nowrap;
+    text-align: center;
+  }
+  /* 1列ごと色を変える */
+  tr:nth-child(even) {
+    background: #c2eeff;
+  }
+  tr:nth-child(odd) {
+    background: #d7eeff;
+  }
+}

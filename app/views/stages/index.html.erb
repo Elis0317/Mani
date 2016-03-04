@@ -2,17 +2,21 @@
 
 <h1>Listing Stages</h1>
 
-<table>
+<table class='stage'>
   <thead>
     <tr>
-      <th>Stage name</th>
-      <th>Stage number</th>
-      <th>Title</th>
-      <th>Difficulty</th>
-      <th>Motivation</th>
+      <th>ステージ</th>
+      <th>タイトル</th>
       <th>Bonus</th>
-      <th>Exp</th>
-      <th>Money</th>
+      <th>消費モチベ</th>
+      <th>経験値</th>
+      <th>/モチベ</th>
+      <th>経験値×1.2</th>
+      <th>×1.2/モチベ</th>
+      <th>Gold</th>
+      <th>/モチベ</th>
+      <th>Gold×1.2</th>
+      <th>×1.2/モチベ</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,21 +24,18 @@
   <tbody>
     <% @stages.each do |stage| %>
       <tr>
-        <td>
+        <td class='str'>
           <% case stage.stage_name %>
           <% when 'stage_1' %>
-            <%= '通常選挙区1' %>
+            <%= '1-' + stage.stage_number + '-' + stage.difficulty %>
           <% when 'stage_2' %>
-            <%= '通常選挙区2' %>
+            <%= '2-' + stage.stage_number + '-' + stage.difficulty %>
           <% when 'stage_3' %>
-            <%= '通常選挙区3' %>
+            <%= '3-' + stage.stage_number + '-' + stage.difficulty %>
           <% end %>
         </td>
-        <td><%= stage.stage_number %></td>
-        <td><%= stage.title %></td>
-        <td><%= stage.difficulty %></td>
-        <td><%= stage.motivation %></td>
-        <td>
+        <td class='str'><%= stage.title %></td>
+        <td class='str'>
           <% case stage.bonus %>
           <% when 0 %>
             <%= 'なし' %>
@@ -48,11 +49,18 @@
             <%= '重装' %>
           <% end %>
         </td>
-        <td><%= stage.exp %></td>
-        <td><%= stage.money %></td>
-        <td><%= link_to 'Show', stage %></td>
-        <td><%= link_to 'Edit', edit_stage_path(stage) %></td>
-        <td><%= link_to 'Destroy', stage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='int'><%= stage.motivation %></td>
+        <td class='int'><%= stage.exp %></td>
+        <td class='int'><%= (stage.exp.to_f / stage.motivation).round(1) %></td>
+        <td class='int'><%= (stage.exp * 1.2).to_i %></td>
+        <td class='int'><B><%= (stage.exp * 1.2 / stage.motivation).round(1) %></B></td>
+        <td class='int'><%= stage.money %></td>
+        <td class='int'><%= (stage.money.to_f / stage.motivation).round(1) %></td>
+        <td class='int'><%= (stage.money * 1.2).to_i %></td>
+        <td class='int'><B><%= (stage.money * 1.2 / stage.motivation).round(1) %></B></td>
+        <td class='int'><%= link_to 'Show', stage %></td>
+        <td class='int'><%= link_to 'Edit', edit_stage_path(stage) %></td>
+        <td class='int'><%= link_to 'Destroy', stage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
